@@ -3,12 +3,7 @@ import React from 'react'
 const Tasks = ({ text, icon, icon2, className }) => {
     return (
 
-        <>
-            <li className='list-group-item d-flex justify-content-between'>{text}{icon2}  {icon}</li>
-
-
-
-        </>
+            <li className='list-group-item rounded d-flex justify-content-between lista'>{text}<span>{icon2}  {icon}</span></li>
     )
 }
 

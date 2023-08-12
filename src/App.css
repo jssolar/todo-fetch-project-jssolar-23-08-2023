@@ -6,11 +6,76 @@ body {
     height: auto;
 }
 
-.container{
+.container {
     display: flex;
-    background-color: tomato;
-    border: 1px solid tomato;
+    background-color: rgb(143, 139, 42);
     border-radius: 5px;
     height: auto;
     margin-top: 20%;
+    box-shadow: 1px 1px 5px rgb(165, 171, 225);
+}
+
+
+
+.input-task {
+    border-radius: 5px;
+    margin: 10px 5px;
+    background-color: #ffffff98;
+}
+
+.button-delete {
+    border-radius: 4px;
+    background-color:  #0d102b;
+    color: rgba(255, 99, 71, 0.838);
+    margin: 10px 5px;
+    border: none;
+}
+
+.button-delete:hover {
+    transition: 0.5s ease;
+    background-color: rgba(255, 0, 0, 0.782);
+    scale: 1.2;
+    color: #0d102b;
+}
+
+.button-add-task {
+    border-radius: 5px;
+    background-color: #0d102b;
+    color: rgba(255, 99, 71, 0.838);
+    margin: 10px 5px;
+    border: none;
+}
+
+.button-add-task:hover {
+    transition: 0.5s ease;
+    background-color: rgba(0, 255, 234, 0.782);
+    scale: 1.2;
+    color: rgba(3, 52, 48, 0.999);
+}
+
+input {
+    border-radius: 5px;
+    outline: note;
+    margin: 10px 5px;
+}
+
+.edit:hover {
+    transition: 0.5s ease-in-out;
+    scale: 1.5;
+    color: blue;
+}
+
+.delete:hover {
+    transition: 0.5s ease-in-out;
+    scale: 1.5;
+    color: rgb(255, 0, 0);
+}
+
+.lista {
+    border-radius: 5px;
+    background-color: #101334;
+    color: rgba(255, 99, 71, 0.838);
+    margin: 10px 5px;
+    padding: 5px 10px;
+    
 }

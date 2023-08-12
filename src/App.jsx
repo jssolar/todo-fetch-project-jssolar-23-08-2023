@@ -12,7 +12,7 @@ const App = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (text.trim() !== 0) {
+        if (text.trim() !== '') {
             setNewTask(newTask.concat(text))
         } setText('')
         console.log(text)
@@ -34,17 +34,17 @@ const App = () => {
                 <div className="coll-md-12">
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="Task">Task</label>
-                        <input type="text" onChange={handleChange} value={text} className='mt-3' />
-                        <Button texto={'Add task'} />
-                        <button onClick={handleDelete}>Delete All</button>
+                        <input type="text" onChange={handleChange} value={text} className='mt-3 input-task' />
+                        <Button texto={'Add task'}/>
+                        <button onClick={handleDelete} className='button-delete' type='text'>Delete All</button>
                         <ListTask>
                             {
                                 // !!newTask.length&&
                                 newTask.length ? (
                                     newTask.map((tarea, index) => {
-                                        return <Tasks key={index} text={tarea} icon2={<FaEdit />} icon={<FaTrash />} />
+                                        return <Tasks key={index} text={tarea} icon2={<FaEdit className='edit'/>} icon={<FaTrash className='delete' />} />
                                     })
-                                ) : (<p>no hay tareas</p>)
+                                ) : (<h4>Emty List</h4>)
                             }
                         </ListTask>
                     </form>
