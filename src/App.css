@@ -1,0 +1,16 @@
+body {
+    display: flex;
+    background-color: #161728;
+    color: whitesmoke;
+    place-content: center;
+    height: auto;
+}
+
+.container{
+    display: flex;
+    background-color: tomato;
+    border: 1px solid tomato;
+    border-radius: 5px;
+    height: auto;
+    margin-top: 20%;
+}
