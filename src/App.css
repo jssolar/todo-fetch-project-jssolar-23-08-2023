@@ -32,7 +32,7 @@ body {
 }
 
 .button-delete:hover {
-    transition: 0.5s ease;
+    transition: 1s ease;
     background-color: rgba(255, 0, 0, 0.782);
     scale: 1.2;
     color: #0d102b;
@@ -47,7 +47,7 @@ body {
 }
 
 .button-add-task:hover {
-    transition: 0.5s ease;
+    transition: 1s ease;
     background-color: rgba(0, 255, 234, 0.782);
     scale: 1.2;
     color: rgba(3, 52, 48, 0.999);
