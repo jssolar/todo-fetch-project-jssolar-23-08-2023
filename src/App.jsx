@@ -8,7 +8,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa'
 
 const App = () => {
 
-    const url = 'https://playground.4geeks.com/apis/fake/todos/user/camaron'
+    const url = 'https://playground.4geeks.com/apis/fake/todos/user/jssolar'
 
 
 
@@ -19,9 +19,10 @@ const App = () => {
 
     useEffect(() => {
         getList()
+        // addTask()
     }, [])
 
-    const getList =  () => {
+    const getList = () => {
         const options = {
             method: "GET",
             // body: []
@@ -29,43 +30,43 @@ const App = () => {
                 'Content-Type': 'application/json'
             }
         }
-        fetch(url, options)
-            .then(function(response) {
+        fetch(`${url}`, options)
+            .then(function (response) {
                 console.log(response)
                 return response.json()
-            }).then(function(data){
-                // setNewTask(data)
+            }).then(function (data) {
+                // if(data !=='')
                 setNewTask(data)
                 console.log(data)
             }).catch((error) =>
                 console.log(error))
     }
 
-    const createUser = (url,options) => {
+    const createUser = (url, options) => {
         fetch(url, options)
-        .then((response)=>{
-            return response.json()
-        })
-        .then((responseJson)=>{
-            console.log(responseJson)
-        })
-        .catch((error)=>{
-            console.log(error)
-        })
+            .then((response) => {
+                return response.json()
+            })
+            .then((responseJson) => {
+                console.log(responseJson)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
 
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         // let  tareas = []
-        const  options = {
+        const options = {
             method: 'POST',
             body: JSON.stringify([]),
             headers: {
                 'Content-Type': 'application/json'
             }
         }
-    
+
         if (text.trim() !== '') {
             setNewTask([...newTask, text])
             console.log(text)
@@ -74,36 +75,35 @@ const App = () => {
         createUser(url, options)
     }
 
-    const handleClick =()=>{
-        const  options = {
+    const handleClick =  () => {
+        const options = {
             method: 'PUT',
-            body: JSON.stringify({label: text, done: false}),
+            body: JSON.stringify({ label: text, done: false }),
             headers: {
                 'Content-Type': 'application/json'
             }
         }
         if (text.trim() !== '') {
-            setNewTask([...newTask, text])
+            setNewTask([...newTask, { label: text, done: false}])
             console.log(text)
         } setText('')
         console.log(options)
         addTask(url, options)
     }
 
-    const addTask = (url, options) =>{
+    const addTask = (url, options) => {
         fetch(url, options)
-        .then((response)=>{
-            return response.json()
-        })
-        .then((responseJson)=>{
-            console.log(responseJson)
-        })
-        .catch((error)=>{
-            console.log(error.msg)
-        })   
-        
-        
+            .then((response) => {
+                return response.json()
+            })
+            .then((responseJson) => {
+                console.log(responseJson)
+            }).catch((error)=>{
+                console.log(error.msg)
+            })
     }
+
+
 
     const handleChange = (e) => {
         setText(e.target.value)
@@ -121,13 +121,13 @@ const App = () => {
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="Task">Task</label>
                         <input type="text" onChange={handleChange} value={text} className='mt-3 input-task' />
-                        <Button  texto={'Add task'} />
+                        <Button texto={'Create User'} />
                         <ListTask>
                             {
                                 // !!newTask.length&&
                                 newTask.length ? (
-                                    newTask.map((tarea, index) => {
-                                        return <Tasks key={index} text={tarea.label} icon2={<FaEdit className='edit' />} icon={<FaTrash className='delete' />} />
+                                    newTask.map((tarea) => {
+                                        return <Tasks key={tarea.id} text={tarea.label} icon2={<FaEdit className='edit' />} icon={<FaTrash className='delete' />} />
                                     })
                                 ) : (<h4>Emty List</h4>)
                             }
@@ -135,8 +135,8 @@ const App = () => {
                     </form>
                 </div>
             </div>
+            <button onClick={handleClick} className='button-add-task' type='text'>Add Task</button>
             <button onClick={handleDelete} className='button-delete' type='text'>Delete All</button>
-            <button onClick={handleClick} className='button-delete' type='text'>Add Task</button>
         </div>
     )
 }
