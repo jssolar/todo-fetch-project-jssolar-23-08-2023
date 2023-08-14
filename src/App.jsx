@@ -41,18 +41,68 @@ const App = () => {
                 console.log(error))
     }
 
+    const createUser = (url,options) => {
+        fetch(url, options)
+        .then((response)=>{
+            return response.json()
+        })
+        .then((responseJson)=>{
+            console.log(responseJson)
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
 
-
-
-
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // if (text.trim() !== '') {
-        //     setNewTask([...newTask, text])
-        //     console.log(text)
-        // } setText('')
+        // let  tareas = []
+        const  options = {
+            method: 'POST',
+            body: JSON.stringify([]),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+    
+        if (text.trim() !== '') {
+            setNewTask([...newTask, text])
+            console.log(text)
+        } setText('')
+        console.log(options)
+        createUser(url, options)
+    }
 
+    const handleClick =()=>{
+        const  options = {
+            method: 'PUT',
+            body: JSON.stringify({label: text, done: false}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        if (text.trim() !== '') {
+            setNewTask([...newTask, text])
+            console.log(text)
+        } setText('')
+        console.log(options)
+        addTask(url, options)
+    }
+
+    const addTask = (url, options) =>{
+        fetch(url, options)
+        .then((response)=>{
+            return response.json()
+        })
+        .then((responseJson)=>{
+            console.log(responseJson)
+        })
+        .catch((error)=>{
+            console.log(error.msg)
+        })   
+        
+        
     }
 
     const handleChange = (e) => {
@@ -71,13 +121,13 @@ const App = () => {
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="Task">Task</label>
                         <input type="text" onChange={handleChange} value={text} className='mt-3 input-task' />
-                        <Button texto={'Add task'} />
+                        <Button  texto={'Add task'} />
                         <ListTask>
                             {
                                 // !!newTask.length&&
                                 newTask.length ? (
-                                    newTask.map((tarea, ) => {
-                                        return <Tasks key={tarea.id} text={tarea.label} icon2={<FaEdit className='edit' />} icon={<FaTrash className='delete' />} />
+                                    newTask.map((tarea, index) => {
+                                        return <Tasks key={index} text={tarea.label} icon2={<FaEdit className='edit' />} icon={<FaTrash className='delete' />} />
                                     })
                                 ) : (<h4>Emty List</h4>)
                             }
@@ -86,6 +136,7 @@ const App = () => {
                 </div>
             </div>
             <button onClick={handleDelete} className='button-delete' type='text'>Delete All</button>
+            <button onClick={handleClick} className='button-delete' type='text'>Add Task</button>
         </div>
     )
 }
