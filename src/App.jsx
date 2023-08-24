@@ -135,8 +135,8 @@ const App = () => {
                     </form>
                 </div>
             </div>
-            <button onClick={handleClick} className='button-add-task' type='text'>Add Task</button>
             <button onClick={handleDelete} className='button-delete' type='text'>Delete All</button>
+            <button onClick={handleClick} className='button-add-task' type='text'>Add Task</button>
         </div>
     )
 }

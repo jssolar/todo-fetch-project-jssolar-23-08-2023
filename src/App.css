@@ -29,6 +29,8 @@ body {
     color: rgba(255, 99, 71, 0.838);
     margin: 10px 5px;
     border: none;
+    
+
 }
 
 .button-delete:hover {
@@ -41,7 +43,7 @@ body {
 .button-add-task {
     border-radius: 5px;
     background-color: #0d102b;
-    color: rgba(255, 99, 71, 0.838);
+    color: rgba(49, 149, 137, 0.838);
     margin: 10px 5px;
     border: none;
 }
